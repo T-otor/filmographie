@@ -124,3 +124,17 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DATABASES = {                                                                   
+    'default': {                                                                
+        'ENGINE': 'django.db.backends.mysql',                                   
+        'NAME': 'filmographie',                                                       
+        'USER': 'admin',                                                         
+        'PASSWORD': 'victor2002',                                              
+        'HOST': '45.154.99.88',                                                    
+        'PORT': '',                                                                                   
+        'OPTIONS': {                                                            
+            'sql_mode': 'traditional',                                          
+        }                                                                       
+    }                                                                           
+}
