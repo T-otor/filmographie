@@ -1,0 +1,15 @@
+<html>
+    <body>
+        {% load static %}
+        <meta charset="UTF-8">
+        <title>{% block title %}SAE23 - Filmographie{% endblock %} </title> <!-- Pour le Titre -->
+        <link rel="stylesheet" type="text/css" href="{%static "gestion/index.css" %}">
+    </body>
+    <head>
+        <section class="titre">
+        <h1 class="titre">Filmographie </h1>
+        <h2 class="titre">Base de données de films avec leurs notes.</h2>
+        {% block content %}
+        {% endblock %}
+    </head>
+</html>

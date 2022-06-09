@@ -4,7 +4,7 @@ from django.db import models
 
 class Categorie(models.Model):
     id = models.IntegerField(blank= False)
-    nom = models.Charfield(max_lenght= 100)
+    nom = models.CharField(max_length= 100)
     descriptif = models.TextField(null = True, blank= True)
 
     def __str__(self):
