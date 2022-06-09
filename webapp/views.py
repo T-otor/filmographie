@@ -4,6 +4,9 @@ from .forms import CategorieForm
 # Create your views here.
 
 # Ajouter 
+def index(request):
+    return render(request, "webapp/index.html")
+
 def ajout(request):
     if request.method == "POST":
         form = CategorieForm(request)
