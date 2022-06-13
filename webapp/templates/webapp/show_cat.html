@@ -1,0 +1,29 @@
+{% extends "webapp/squelette.html" %}
+
+        {% block content %}
+<section>
+    {% for Cat in webapp_cat %}
+    <table class="table is-fullwidth is-hoverable">
+        <thead>
+          <tr>
+            <th>ID </th>
+            <th>Nom </th>
+            <th>Description </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{Cat.id}}</td>
+            <td>{{Cat.Nom}}</td>
+            <td>{{Cat.Description}}</td>
+          </tr>
+
+        </tbody>
+        
+      </table>
+      <a href="/webapp/modif/cat/{{Cat.id}}",class='bouton'>Modifier</a>
+      <a href="/webapp/delete/cat/{{Cat.id}}",class='bouton'>Supprimer</a>
+{% endfor %}     
+<br>
+<a href='/webapp/index'class="bouton">Retour à l'accueil</a>
+{% endblock %}
