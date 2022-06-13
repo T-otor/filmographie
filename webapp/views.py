@@ -51,4 +51,4 @@ def delete_cat(request, id):
 def modif_categorie(request, id):
     hdd = models.Cat.objects.get(pk=id)
     form = FormCat(hdd.dico())
-    return render(request, 'webapt/ajout_categorie.html',{"form":form, "id":id})
+    return render(request, 'webapp/ajout_categorie.html',{"form":form, "id":id})
