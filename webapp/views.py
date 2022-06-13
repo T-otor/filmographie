@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import FormCat
+from .forms import FormCat, FormAct 
 from . import models
 from django.http import HttpResponseRedirect
 # Create your views here.
@@ -34,7 +34,7 @@ def traitement_cat(request):
         ram = lform.save()
         return render(request,"webapp/index.html",{"Ram" : ram})
     else:
-        return render(request,"webapp/ajout_categorie.htmll",{"form": lform})
+        return render(request,"webapp/ajout_categorie.html",{"form": lform})
 
         
 def show_cat(request):
@@ -52,3 +52,28 @@ def modif_categorie(request, id):
     hdd = models.Cat.objects.get(pk=id)
     form = FormCat(hdd.dico())
     return render(request, 'webapp/ajout_categorie.html',{"form":form, "id":id})
+
+def traitement_act(request):
+    lform = FormAct(request.POST)
+    if lform.is_valid():
+        form = lform.save()
+        return render(request,"webapp/index.html",{"Form" : form})
+    else:
+        return render(request,"webapp/ajout_acteur.html",{"form": lform})
+    
+def show_act(request):
+    queryset = models.Act.objects.all()  
+    print(queryset)
+    print(len(queryset))
+    return render(request,"webapp/show_act.html",{"webapp_act" : queryset})
+
+def delete_act(request, id):
+    id = models.Act.objects.get(pk=id)
+    id.delete()
+    return HttpResponseRedirect("/webapp/show_act")
+
+def modif_act(request, id):
+    hdd = models.Act.objects.get(pk=id)
+    form = FormAct(hdd.dico())
+    return render(request, 'webapp/ajout_acteur.html',{"form":form, "id":id})
+
