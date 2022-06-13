@@ -1,12 +1,18 @@
-{% extends "webapp/squelette.html" %}
+{% extends "gestion/main.html" %}
 
         {% block content %}
-    <body>
-        <h1> Saisie d'une nouvelle catégorie</h1>
-        <form method="post" action="/filmographie/traitement_categorie/">
-            {% csrf_token %}
-            {{form.as_ul}}
-            <input type="submit" value="envoyez les données"/>
-        </form>
-    </body>
-    {% endblock %}
+    <h3 class="titre">Créer un nouvel enregistrement</h3>
+    </section>
+<section>
+    <form method="post" action="/gestion/traitementcpu">
+    {% csrf_token %}
+    {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
+    -->
+    <input type="submit" value="envoyer␣les␣données"\>
+    <a href='/gestion/index'class="bouton">Retour à l'accueil</a>
+    </form>
+</section>
+</section>
+</body>
+</html>
+{% endblock %}
