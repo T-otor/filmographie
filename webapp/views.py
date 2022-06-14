@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import FormCat, FormAct 
+from .forms import FormCat, FormAct, FormPersonne
 from . import models
 from django.http import HttpResponseRedirect
 # Create your views here.
@@ -56,10 +56,11 @@ def modif_categorie(request, id):
 def traitement_act(request):
     lform = FormAct(request.POST)
     if lform.is_valid():
-        form = lform.save()
-        return render(request,"webapp/index.html",{"Form" : form})
+        Act = lform.save()
+        return render(request,"webapp/index.html",{"Act" : Act})
     else:
-        return render(request,"webapp/ajout_acteur.html",{"form": lform})
+        return render(request,"webapp/ajout_categorie.html",{"form": lform})
+
     
 def show_act(request):
     queryset = models.Act.objects.all()  
@@ -77,3 +78,30 @@ def modif_act(request, id):
     form = FormAct(hdd.dico())
     return render(request, 'webapp/ajout_acteur.html',{"form":form, "id":id})
 
+
+def show_personne(request):
+    queryset = models.Personne.objects.all()  
+    print(queryset)
+    print(len(queryset))
+    return render(request,"webapp/show_personne.html",{"webapp_personne" : queryset})
+
+def delete_personne(request, id):
+    id = models.Personne.objects.get(pk=id)
+    id.delete()
+    return HttpResponseRedirect("/webapp/show_personne")
+
+def modif_personne(request, id):
+    hdd = models.Personne.objects.get(pk=id)
+    form = FormPersonne(hdd.dico())
+    return render(request, 'webapp/ajout_personne.html',{"form":form, "id":id})
+
+def ajout_personne(request):
+    if request.method == "POST":
+        form = FormPersonne(request)
+        if form.is_valid():
+            return HttpResponseRedirect("/webapp/index")
+        else:
+            return render(request, 'webapp/ajout_personne.html', {'form': form})
+    else:
+        form = FormPersonne()
+        return render(request, 'webapp/ajout_personne.html', {'form': form})

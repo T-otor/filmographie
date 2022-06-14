@@ -14,8 +14,26 @@ class FormCat(ModelForm):
 
 class FormAct(ModelForm):
     class Meta:
-            model = models.Cat
+            model = models.Act
             fields = ("Nom",)
             albels = {
                 "Nom" : _("Nom"),
+            }
+
+class FormPersonne(ModelForm):
+    class Meta:
+            model = models.Personne
+            fields = ("Nom", "Prenom", "Age")
+            albels = {
+                "Nom" : _("Nom"),
+                "Prenom" : _("Prenom"),
+                "Age" : _("Age")
+            }
+
+class FormType(ModelForm):
+    class Meta:
+            model = models.Type
+            fields = ("type",)
+            albels = {
+                "type" : _("type"),
             }
