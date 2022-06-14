@@ -37,12 +37,13 @@ class Personne(models.Model):
     mail = models.EmailField()
     password = models.CharField(max_length=50)
     type = models.ForeignKey(Type, on_delete=models.CASCADE)
+    pseudo = models.CharField(max_length=50)
     
     def __str__(self):
-        chaine = f"Nom {self.Nom}, Prenom {self.Prenom}, Age {self.Age}, mail {self.mail}, password {self.password}, type {self.type}"
+        chaine = f"Nom {self.Nom}, Prenom {self.Prenom}, Age {self.Age}, mail {self.mail}, password {self.password}, type {self.type}, pseudo {self.pseudo}"
         return chaine
     def dico(self):
-        dico = {'Nom': self.Nom, 'Prenom': self.Prenom, 'Age': self.Age, 'mail': self.mail, 'password': self.password, 'type': self.type}
+        dico = {'Nom': self.Nom, 'Prenom': self.Prenom, 'Age': self.Age, 'mail': self.mail, 'password': self.password, 'type': self.type, 'pseudo': self.pseudo}
         return dico
-        
+
 

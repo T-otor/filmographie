@@ -20,20 +20,24 @@ class FormAct(ModelForm):
                 "Nom" : _("Nom"),
             }
 
-class FormPersonne(ModelForm):
-    class Meta:
-            model = models.Personne
-            fields = ("Nom", "Prenom", "Age")
-            albels = {
-                "Nom" : _("Nom"),
-                "Prenom" : _("Prenom"),
-                "Age" : _("Age")
-            }
-
 class FormType(ModelForm):
     class Meta:
             model = models.Type
             fields = ("type",)
             albels = {
                 "type" : _("type"),
+            }
+
+class FormPersonne(ModelForm):
+    class Meta:
+            model = models.Personne
+            fields = ("mail", "password", "type", "Nom", "Prenom", "Age", "pseudo")
+            albels = {
+                "mail" : _("mail"),
+                "password" : _("password"),
+                "type" : _("type"),
+                "Nom" : _("Nom"),
+                "Prenom" : _("Prenom"),
+                "Age" : _("Age"),
+                "pseudo" : _("pseudo")
             }

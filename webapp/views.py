@@ -79,41 +79,6 @@ def modif_act(request, id):
     return render(request, 'webapp/ajout_acteur.html',{"form":form, "id":id})
 
 
-def show_personne(request):
-    queryset = models.Personne.objects.all()  
-    print(queryset)
-    print(len(queryset))
-    return render(request,"webapp/show_personne.html",{"webapp_personne" : queryset})
-
-def delete_personne(request, id):
-    id = models.Personne.objects.get(pk=id)
-    id.delete()
-    return HttpResponseRedirect("/webapp/show_personne")
-
-def modif_personne(request, id):
-    hdd = models.Personne.objects.get(pk=id)
-    form = FormPersonne(hdd.dico())
-    return render(request, 'webapp/ajout_personne.html',{"form":form, "id":id})
-
-def ajout_personne(request):
-    if request.method == "POST":
-        form = FormPersonne(request)
-        if form.is_valid():
-            return HttpResponseRedirect("/webapp/index")
-        else:
-            return render(request, 'webapp/ajout_personne.html', {'form': form})
-    else:
-        form = FormPersonne()
-        return render(request, 'webapp/ajout_personne.html', {'form': form})
-
-def traitement_personne(request):
-    lform = FormPersonne(request.POST)
-    if lform.is_valid():
-        Personne = lform.save()
-        return render(request,"webapp/index.html",{"Personne" : Personne})
-    else:
-        return render(request,"webapp/ajout_personne.html",{"form": lform})
-
 def ajout_type(request):
     if request.method == "POST":
         form = FormType(request)
@@ -148,3 +113,40 @@ def modif_type(request, id):
     hdd = models.Type.objects.get(pk=id)
     form = FormType(hdd.dico())
     return render(request, 'webapp/ajout_type.html',{"form":form, "id":id})
+
+
+def ajout_personne(request):
+    if request.method == "POST":
+        form = FormPersonne(request)
+        if form.is_valid():
+            return HttpResponseRedirect("/webapp/index")
+        else:
+            return render(request, 'webapp/ajout_personne.html', {'form': form})
+    else:
+        form = FormPersonne()
+        return render(request, 'webapp/ajout_personne.html', {'form': form})
+
+def traitement_personne(request):
+    lform = FormPersonne(request.POST)
+    if lform.is_valid():
+        Personne = lform.save()
+        return render(request,"webapp/index.html",{"Personne" : Personne})
+    else:
+        return render(request,"webapp/ajout_personne.html",{"form": lform})
+
+def modif_personne(request, id):
+    hdd = models.Personne.objects.get(pk=id)
+    form = FormPersonne(hdd.dico())
+    return render(request, 'webapp/ajout_personne.html',{"form":form, "id":id})
+
+def delete_personne(request, id):
+    id = models.Personne.objects.get(pk=id)
+    id.delete()
+    return HttpResponseRedirect("/webapp/show_personne")
+
+def show_personne(request):
+    queryset = models.Personne.objects.all()  
+    print(queryset)
+    print(len(queryset))
+    return render(request,"webapp/show_personne.html",{"webapp_personne" : queryset})
+
