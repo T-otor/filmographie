@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import FormCat, FormAct, FormPersonne
+from .forms import FormCat, FormAct, FormPersonne, FormType
 from . import models
 from django.http import HttpResponseRedirect
 # Create your views here.
@@ -105,3 +105,46 @@ def ajout_personne(request):
     else:
         form = FormPersonne()
         return render(request, 'webapp/ajout_personne.html', {'form': form})
+
+def traitement_personne(request):
+    lform = FormPersonne(request.POST)
+    if lform.is_valid():
+        Personne = lform.save()
+        return render(request,"webapp/index.html",{"Personne" : Personne})
+    else:
+        return render(request,"webapp/ajout_personne.html",{"form": lform})
+
+def ajout_type(request):
+    if request.method == "POST":
+        form = FormType(request)
+        if form.is_valid():
+            return HttpResponseRedirect("/webapp/index")
+        else:
+            return render(request, 'webapp/ajout_type.html', {'form': form})
+    else:
+        form = FormType()
+        return render(request, 'webapp/ajout_type.html', {'form': form})
+    
+def traitement_type(request):
+    lform = FormType(request.POST)
+    if lform.is_valid():
+        Type = lform.save()
+        return render(request,"webapp/index.html",{"Type" : Type})
+    else:
+        return render(request,"webapp/ajout_type.html",{"form": lform})
+
+def show_type(request):
+    queryset = models.Type.objects.all()  
+    print(queryset)
+    print(len(queryset))
+    return render(request,"webapp/show_type.html",{"webapp_type" : queryset})
+
+def delete_type(request, id):
+    id = models.Type.objects.get(pk=id)
+    id.delete()
+    return HttpResponseRedirect("/webapp/show_type")
+
+def modif_type(request, id):
+    hdd = models.Type.objects.get(pk=id)
+    form = FormType(hdd.dico())
+    return render(request, 'webapp/ajout_type.html',{"form":form, "id":id})
