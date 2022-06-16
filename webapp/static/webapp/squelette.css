@@ -1,0 +1,101 @@
+/*body du squelette*/
+body{
+    background-color:  whitesmoke;
+    color: rgb(0, 0, 0);
+    font-family: 'Poppins';
+    font-weight: 200;
+    margin: 0;
+    text-decoration: none;
+}
+.contenu{
+    padding: 5%;
+}
+h1{
+    text-decoration: underline overline;
+    text-decoration-color: #FF4B61;
+}
+/*FIN body du squelette*/
+
+
+/*Barre navigation (squelette)*/
+.navbar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #FF4B61;
+    display: flex;
+    font-size: 30px;
+    font-family: 'Poppins'; 
+    font-weight: 400;
+    justify-content: space-around;
+}
+.navbar li{
+    float: left; 
+}
+.navbar a{
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 0.75em;
+    text-decoration: none;
+}
+.navbar .clic:hover{
+    background-color: #FF7182;
+}
+/*FIN barre navigation (squelette)*/
+
+
+/*bas de page*/
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FF4B61;
+    font-weight: 400;
+    color: black;
+    font-size: 20px;
+}
+.gauche{
+    display: block;
+    justify-content: left;
+    padding-left: 60px;
+}
+.droite{
+    display: block;
+    justify-content: right;
+    padding-right: 60px;
+}
+/*FIN bas de page*/
+
+
+/*sh categorie*/
+tbody{
+	font-family: 'Poppins';
+    font-weight: 200;
+	font-size: 14px;
+	line-height: 18px;
+	background: #f4f4f4;
+}
+
+.list-ent{
+	padding: 15px;
+	overflow: hidden;
+}
+
+.list-item{
+	border: 1px solid #EEE;
+	background: #FFF;
+	margin-bottom: 10px;
+	padding: 10px;
+	box-shadow: 0px 0px 10px 0px #EEE;
+}
+
+.list-item h4{
+	color: #FF7182;
+	font-size: 18px;
+	margin: 0 0 5px;	
+}
+/*FIN sh categorie*/
