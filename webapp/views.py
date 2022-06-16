@@ -150,19 +150,21 @@ def modif_personne(request, id):
 def delete_personne(request, id):
     id = models.Personne.objects.get(pk=id)
     id.delete()
-    return HttpResponseRedirect("/webapp/show_personne")
+    return HttpResponseRedirect("/webapp/show_utilisateur")
 
 def show_personne(request):
     queryset = models.Personne.objects.all()  
     print(queryset)
     print(len(queryset))
-    return render(request,"webapp/show_personne.html",{"webapp_personne" : queryset})
+    return render(request,"webapp/gestion_utilisateur.html",{"webapp_personne" : queryset})
+
+
 
 def login_user(request):
     if request.method == 'POST':
-        users = request.POST.get('user')
-        passwd = request.POST.get('passwd')
-        user = authenticate(username=users, password=passwd)
+        users = request.POST.get('mail')
+        passwd = request.POST.get('password')
+        user = authenticate(username=mail, password=password)
         if user is not None and user.is_active:
             login(request, user)
             return HttpResponseRedirect("webapp/manager/")
