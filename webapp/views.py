@@ -209,3 +209,7 @@ def delete_real(request, id):
     id.delete()
     return HttpResponseRedirect("/webapp/show_real")
 
+def modif_real(request, id):
+    hdd = models.Realisateur.objects.get(pk=id)
+    form = FormRealisateur(hdd.dico())
+    return render(request, 'webapp/ajout_realisateur.html',{"form":form, "id":id})

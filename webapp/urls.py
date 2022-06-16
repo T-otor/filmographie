@@ -31,4 +31,5 @@ urlpatterns = [
     path('traitement_real/', views.traitement_real),
     path('show_real/', views.show_real),
     path('delete/real/<int:id>', views.delete_real),
+    path('modif/real/<int:id>', views.modif_real),
 ]

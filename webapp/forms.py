@@ -62,7 +62,7 @@ class NewUserForm(UserCreationForm):
 class FormFilm(ModelForm):
     class Meta:
         model = models.Film
-        fields = ("titre", "annee", "genre", "realisateur", "acteur_principal", "synopsis", "note")
+        fields = ("titre", "annee", "genre", "realisateur", "acteur_principal", "synopsis", "note", "avis", "pseudo")
         labels = {
             "titre" : _("titre"),
             "annee" : _("annee"),
@@ -71,6 +71,8 @@ class FormFilm(ModelForm):
             "acteur_principal" : _("acteur principal"),
             "synopsis" : _("synopsis"),
             "note" : _("note"),
+            "avis" : _("avis"),
+            "pseudo" : _("pseudo")
         }
 
 class FormRealisateur(ModelForm):

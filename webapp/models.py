@@ -66,10 +66,13 @@ class Film(models.Model):
     acteur_principal = models.ForeignKey(Act, on_delete=models.CASCADE)
     synopsis = models.CharField(max_length=100000)
     note = models.IntegerField()
+    avis = models.CharField(max_length=100000)
+    pseudo = models.CharField(max_length=50)
     def __str__(self):
-        chaine = f"titre {self.titre}, annee {self.annee}, genre {self.genre}, realisateur {self.realisateur}, acteur_principal {self.acteur_principal}, synopsis {self.synopsis}, note {self.note}"
+        chaine = f"{self.titre}, {self.annee}, {self.genre}, {self.realisateur}, {self.acteur_principal}, {self.synopsis}, {self.note}, {self.avis}, {self.pseudo}"
         return chaine
     def dico(self):
-        dico = {'titre': self.titre, 'annee': self.annee, 'genre': self.genre, 'realisateur': self.realisateur, 'acteur_principal': self.acteur_principal, 'synopsis': self.synopsis, 'note': self.note}
+        dico = {'titre': self.titre, 'annee': self.annee, 'genre': self.genre, 'realisateur': self.realisateur, 'acteur_principal': self.acteur_principal, 'synopsis': self.synopsis, 'note': self.note, 'avis': self.avis, 'pseudo': self.pseudo}
         return dico
+
 
