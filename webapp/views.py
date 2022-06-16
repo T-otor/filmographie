@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .forms import FormCat, FormAct, FormPersonne, FormType
 from . import models
 from django.http import HttpResponseRedirect
+
+from django.contrib.auth.models import User
+
 # Create your views here.
 def index(request):
     return render(request, 'webapp/index.html')
@@ -118,6 +121,9 @@ def modif_type(request, id):
 def ajout_personne(request):
     if request.method == "POST":
         form = FormPersonne(request)
+        if User.objects.filter(username=self.cleaned_data['pseudo']).exists():
+            form.add_error('pseudo', 'Ce nom d\'utilisateur est déjà utilisé')
+            return render(request, 'webapp/ajout_utilisateur.html', {'form': form})
         if form.is_valid():
             return HttpResponseRedirect("/webapp/index")
         else:
@@ -128,6 +134,7 @@ def ajout_personne(request):
 
 def traitement_personne(request):
     lform = FormPersonne(request.POST)
+    
     if lform.is_valid():
         Personne = lform.save()
         return render(request,"webapp/index.html",{"Personne" : Personne})

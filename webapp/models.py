@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+
 
 # Create your models here.
 class Cat(models.Model):
@@ -38,10 +41,14 @@ class Personne(models.Model):
     password = models.CharField(max_length=50)
     type = models.ForeignKey(Type, on_delete=models.CASCADE)
     pseudo = models.CharField(max_length=50)
+   
+    
     
     def __str__(self):
         chaine = f"Nom {self.Nom}, Prenom {self.Prenom}, Age {self.Age}, mail {self.mail}, password {self.password}, type {self.type}, pseudo {self.pseudo}"
-        return chaine
+        if User.objects.filter(username=self.cleaned_data['pseudo']).exists():
+            chaine += "Pseudo existant"
+        return chaine   
     def dico(self):
         dico = {'Nom': self.Nom, 'Prenom': self.Prenom, 'Age': self.Age, 'mail': self.mail, 'password': self.password, 'type': self.type, 'pseudo': self.pseudo}
         return dico
