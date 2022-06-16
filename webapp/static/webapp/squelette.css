@@ -6,6 +6,7 @@ body{
     font-weight: 200;
     margin: 0;
     text-decoration: none;
+    list-style-type: none; 
 }
 .contenu{
     padding: 5%;
@@ -18,31 +19,54 @@ h1{
 
 
 /*Barre navigation (squelette)*/
-.navbar{
-    list-style-type: none;
+nav {
+	margin: 50px 0;
+	background-color: #FF4B61;
+}
+nav .navbar {
+	padding: 0;
     margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #FF4B61;
-    display: flex;
-    font-size: 30px;
-    font-family: 'Poppins'; 
-    font-weight: 400;
-    justify-content: space-around;
-}
-.navbar li{
-    float: left; 
-}
-.navbar a{
-    display: block;
+	list-style: none;
+	position: relative;
+	}	
+nav .navbar li {
+	display:inline-block;
+	background-color: #FF4B61;
+	}
+nav a {
+	display:block;
+	padding:0 10px;	
     color: black;
-    text-align: center;
-    padding: 0.75em;
+    list-style-type: none;
     text-decoration: none;
+	font-size:20px;
+	line-height: 60px;
+	text-decoration:none;
 }
-.navbar .clic:hover{
-    background-color: #FF7182;
+nav a:hover { 
+	background-color: #FF7182; 
 }
+
+/*drop down*/
+nav .navbar ul {
+	display: none;
+	position: absolute; 
+	top: 60px; /* the height of the main nav */
+}
+/* Display Dropdowns on Hover */
+nav .navbar li:hover > ul {
+	display:inherit;
+}	
+/* Fisrt Tier Dropdown */
+nav .navbar ul li {
+	width:170px;
+	float:none;
+	display:list-item;
+	position: relative;
+}
+li > a:after { content:  ' +'; }
+li > a:only-child:after { content: ''; }
+/*FIN dropdown*/
 /*FIN barre navigation (squelette)*/
 
 

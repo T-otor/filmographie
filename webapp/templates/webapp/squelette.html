@@ -11,15 +11,30 @@
     </head>
     <header>
         <!--Barre de navigation-->
-        <ul class="navbar">
-            <il style="font-family: 'Kdam Thmor Pro', sans-serif; text-decoration: underline overline; text-decoration-color: black;"><a href="/webapp/index/">FILMOGRAPHIE</a></il>
-            <il><a href="/webapp/index/" class="clic">Accueil</a></il>
-            <il><a href="/webapp/recherche" class="clic">Rechercher un film</a></il>
-            <il><a href="/webapp/best" class="clic">Voir les films les mieux notés</a></il>
-            <il><a href="/webapp/ajout_categorie" class="clic">Ajouter une catégorie</a></il>
-            <il><a href="/webapp/ajout_utilisateur" class="clic">Inscription</a></il>
-            <il><a href="/webapp/connexion" class="clic">Connexion</a></il>
-        </ul>
+        <nav>
+            <ul class="navbar">
+                <li style="font-family: 'Kdam Thmor Pro', sans-serif; text-decoration: underline overline; text-decoration-color: black;"><a href="/webapp/index/">FILMOGRAPHIE</a></li>
+                <li><a href="/webapp/index/" class="clic">Accueil</a></li>
+                <li>
+                    <a href="#" class="clic">Répertoire</a>
+                    <ul>
+                        <li><a href="/webapp/show_film" class="clic">Films</a></li>
+                        <li><a href="/webapp/show_cat" class="clic">Catégories</a></li>
+                        <li><a href="/webapp/show_act" class="clic">Acteurs</a></li>
+                        <li><a href="/webapp/show_real" class="clic">Réalisateurs</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="clic">Ajouter</a>
+                    <ul>
+                        <li><a href="/webapp/ajout_categorie" class="clic">Catégories</a></li>
+                        <li><a href="/webapp/ajout_acteur" class="clic">Acteurs</a></li>
+                    </ul>
+                </li>
+                <li><a href="/webapp/ajout_utilisateur" class="clic">Inscription</a></li>
+                <li><a href="/webapp/connexion" class="clic">Connexion</a></li>
+            </ul>
+        </nav>
     </header>
     <body>
         <div class=contenu>
