@@ -12,7 +12,7 @@ body{
     padding: 5%;
 }
 h1{
-	font-size: 25px;
+	font-size: 35px;
     text-decoration: underline overline;
     text-decoration-color: #FF4B61;
 }
@@ -21,8 +21,10 @@ h1{
 
 /*Barre navigation (squelette)*/
 nav {
-	margin: 50px 0;
+	display: flex;
+	margin: 0 0;
 	background-color: #FF4B61;
+	top: 0;
 }
 nav .navbar {
 	padding: 0;
@@ -36,23 +38,26 @@ nav .navbar li {
 	}
 nav a {
 	display:block;
-	padding:0 10px;	
-    color: black;
+	padding:0 60px;	
+	color: black;
+	font-weight: 400;
     list-style-type: none;
     text-decoration: none;
-	font-size:20px;
-	line-height: 60px;
-	text-decoration:none;
+	font-size:25px;
+	line-height: 100px;
 }
 nav a:hover { 
 	background-color: #FF7182; 
+}
+.adroite{
+    justify-content: right;
 }
 
 /*drop down*/
 nav .navbar ul {
 	display: none;
 	position: absolute; 
-	top: 60px; /* the height of the main nav */
+	top: 100px; /* the height of the main nav */
 }
 /* Display Dropdowns on Hover */
 nav .navbar li:hover > ul {
@@ -60,7 +65,7 @@ nav .navbar li:hover > ul {
 }	
 /* Fisrt Tier Dropdown */
 nav .navbar ul li {
-	width:170px;
+	width:220px;
 	float:none;
 	display:list-item;
 	position: relative;
