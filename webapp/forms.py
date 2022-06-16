@@ -68,7 +68,7 @@ class FormFilm(ModelForm):
             "annee" : _("annee"),
             "genre" : _("genre"),
             "realisateur" : _("realisateur"),
-            "acteur_principal" : _("acteur_principal"),
+            "acteur_principal" : _("acteur principal"),
             "synopsis" : _("synopsis"),
             "note" : _("note"),
         }

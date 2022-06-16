@@ -9,7 +9,7 @@ class Cat(models.Model):
     Description = models.CharField(max_length=100000)
 
     def __str__(self):
-        chaine = f"Nom {self.Nom}, Description {self.Description}"
+        chaine = f"{self.Nom} : {self.Description}"
         return chaine
     def dico(self):
         dico = {'Nom': self.Nom, 'Description': self.Description}
@@ -19,7 +19,7 @@ class Act(models.Model):
     Nom = models.CharField(max_length=50)
 
     def __str__(self):
-        chaine = f"Nom {self.Nom}"
+        chaine = f"{self.Nom}"
         return chaine
     def dico(self):
         dico = {'Nom': self.Nom}
@@ -51,7 +51,7 @@ class Personne(models.Model):
 class Realisateur(models.Model):
     Nom = models.CharField(max_length=50)
     def __str__(self):
-        chaine = f"Nom {self.Nom}"
+        chaine = f"{self.Nom}"
         return chaine
     def dico(self):
         dico = {'Nom': self.Nom}
@@ -60,10 +60,10 @@ class Realisateur(models.Model):
 
 class Film(models.Model):
     titre = models.CharField(max_length=50)
-    annee = models.DateField()
-    genre = models.CharField(max_length=50)
+    annee = models.IntegerField()
+    genre = models.ForeignKey(Cat, on_delete=models.CASCADE)
     realisateur = models.ForeignKey(Realisateur, on_delete=models.CASCADE)
-    acteur_principal = models.CharField(max_length=50)
+    acteur_principal = models.ForeignKey(Act, on_delete=models.CASCADE)
     synopsis = models.CharField(max_length=100000)
     note = models.IntegerField()
     def __str__(self):

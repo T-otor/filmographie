@@ -2,7 +2,7 @@
 
         {% block content %}
 <section>
-    {% for Film in webapp_Film %}
+    {% for Film in webapp_film %}
     <table class="table is-fullwidth is-hoverable">
         <thead>
           <tr>
@@ -19,7 +19,7 @@
         <tbody>
           <tr>
             <td>{{Film.id}}</td>
-            <td>{{Film.titir}}</td>
+            <td>{{Film.titre}}</td>
             <td>{{Film.annee}}</td>
             <td>{{Film.genre}}</td>
             <td>{{Film.realisateur}}</td>
