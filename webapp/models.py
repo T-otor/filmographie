@@ -26,7 +26,7 @@ class Act(models.Model):
 class Type(models.Model):
     type = models.CharField(max_length=50)
     def __str__(self):
-        chaine = f"type {self.type}"
+        chaine = f"{self.type}"
         return chaine
 
 

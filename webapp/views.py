@@ -121,10 +121,10 @@ def ajout_personne(request):
         if form.is_valid():
             return HttpResponseRedirect("/webapp/index")
         else:
-            return render(request, 'webapp/ajout_personne.html', {'form': form})
+            return render(request, 'webapp/ajout_utilisateur.html', {'form': form})
     else:
         form = FormPersonne()
-        return render(request, 'webapp/ajout_personne.html', {'form': form})
+        return render(request, 'webapp/ajout_utilisateur.html', {'form': form})
 
 def traitement_personne(request):
     lform = FormPersonne(request.POST)
