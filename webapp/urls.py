@@ -14,11 +14,6 @@ urlpatterns = [
     path('show_act/', views.show_act),
     path('delete/act/<int:id>', views.delete_act),
     path('modif/act/<int:id>', views.modif_act),
-    path('ajout_utilisateur/', views.ajout_personne),
-    path('traitement_utilisateur/', views.traitement_personne),
-    path('show_utilisateur/', views.show_personne),
-    path('delete/personne/<int:id>', views.delete_personne),
-    path('modif/personne/<int:id>', views.modif_personne),
     path('ajout_type/', views.ajout_type),
     path('traitement_type/', views.traitement_type),
     path('show_type/', views.show_type),
@@ -26,5 +21,5 @@ urlpatterns = [
     path('modif/type/<int:id>', views.modif_type),
     path('connexion/', views.login_user),
     path("accounts/", include("django.contrib.auth.urls")),
-    #path('manager/', auth_views.login, name='login'),
+    path("accounts/register", views.register_request, name="register"),
 ]
