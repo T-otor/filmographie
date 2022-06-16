@@ -24,7 +24,6 @@ urlpatterns = [
     path('show_type/', views.show_type),
     path('delete/type/<int:id>', views.delete_type),
     path('modif/type/<int:id>', views.modif_type),
-    path('connexion/', views.login_user),
     path("accounts/", include("django.contrib.auth.urls")),
     #path('manager/', auth_views.login, name='login'),
 ]
