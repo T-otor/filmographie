@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from .forms import FormCat, FormAct, FormPersonne, FormType
+from .forms import FormCat, FormAct, FormPersonne, FormType, NewUserForm
 from . import models
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate,logout
-
+from django.contrib import messages
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -119,47 +119,6 @@ def modif_type(request, id):
     return render(request, 'webapp/ajout_type.html',{"form":form, "id":id})
 
 
-def ajout_personne(request):
-    if request.method == "POST":
-        form = FormPersonne(request)
-        if User.objects.filter(username=self.cleaned_data['pseudo']).exists():
-            form.add_error('pseudo', 'Ce nom d\'utilisateur est déjà utilisé')
-            return render(request, 'webapp/ajout_utilisateur.html', {'form': form})
-        if form.is_valid():
-            return HttpResponseRedirect("/webapp/index")
-        else:
-            return render(request, 'webapp/ajout_utilisateur.html', {'form': form})
-    else:
-        form = FormPersonne()
-        return render(request, 'webapp/ajout_utilisateur.html', {'form': form})
-
-def traitement_personne(request):
-    lform = FormPersonne(request.POST)
-    
-    if lform.is_valid():
-        Personne = lform.save()
-        return render(request,"webapp/index.html",{"Personne" : Personne})
-    else:
-        return render(request,"webapp/ajout_personne.html",{"form": lform})
-
-def modif_personne(request, id):
-    hdd = models.Personne.objects.get(pk=id)
-    form = FormPersonne(hdd.dico())
-    return render(request, 'webapp/ajout_personne.html',{"form":form, "id":id})
-
-def delete_personne(request, id):
-    id = models.Personne.objects.get(pk=id)
-    id.delete()
-    return HttpResponseRedirect("/webapp/show_utilisateur")
-
-def show_personne(request):
-    queryset = models.Personne.objects.all()  
-    print(queryset)
-    print(len(queryset))
-    return render(request,"webapp/gestion_utilisateur.html",{"webapp_personne" : queryset})
-
-
-
 def login_user(request):
     if request.method == 'POST':
         users = request.POST.get('mail')
@@ -173,5 +132,14 @@ def login_user(request):
     else:
         return render(request,"webapp/login.html")
 
-def manager(request):
-    return render(request, "webapp/manager.html")
+def register_request(request):
+	if request.method == "POST":
+		form = NewUserForm(request.POST)
+		if form.is_valid():
+			user = form.save()
+			login(request, user)
+			messages.success(request, "Registration successful." )
+			return HttpResponseRedirect("/webapp/index/")
+		messages.error(request, "Unsuccessful registration. Invalid information.")
+	form = NewUserForm()
+	return render (request=request, template_name="webapp/register.html", context={"register_form":form})

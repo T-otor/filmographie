@@ -1,7 +1,10 @@
 from cProfile import label
+from django import forms
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 from . import models
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class FormCat(ModelForm):
     class Meta:
@@ -41,3 +44,17 @@ class FormPersonne(ModelForm):
                 "Age" : _("Age"),
                 "pseudo" : _("pseudo")
             }
+
+class NewUserForm(UserCreationForm):
+	email = forms.EmailField(required=True)
+
+	class Meta:
+		model = User
+		fields = ("username", "email", "password1", "password2")
+
+	def save(self, commit=True):
+		user = super(NewUserForm, self).save(commit=False)
+		user.email = self.cleaned_data['email']
+		if commit:
+			user.save()
+		return user

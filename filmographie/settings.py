@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ["45.154.99.88", "127.0.0.1"]
 INSTALLED_APPS = [
     'webapp',
     'django.contrib.admin',
+    'crispy_forms',
     "django.contrib.auth",
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -127,3 +128,4 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "/webapp/index/"
+LOGOUT_REDIRECT_URL = "/webapp/index/" 
