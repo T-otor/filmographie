@@ -1,0 +1,27 @@
+{% extends "webapp/squelette.html" %}
+
+        {% block content %}
+<section>
+    {% for Realisateur in webapp_realisateur %}
+    <table class="table is-fullwidth is-hoverable">
+        <thead>
+          <tr>
+            <th>ID </th>
+            <th>Nom </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{Realisateur.id}}</td>
+            <td>{{Realisateur.Nom}}</td>
+          </tr>
+
+        </tbody>
+        
+      </table>
+      <a href="/webapp/modif/act/{{Act.id}}",class='bouton'>Modifier</a>
+      <a href="/webapp/delete/act/{{Act.id}}",class='bouton'>Supprimer</a>
+{% endfor %}     
+<br>
+<a href='/webapp/index'class="bouton">Retour à l'accueil</a>
+{% endblock %}

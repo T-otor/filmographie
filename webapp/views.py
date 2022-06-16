@@ -181,17 +181,17 @@ def modif_film(request, id):
 
 def ajout_realisateur(request):
     if request.method == "POST":
-        form = FormReal(request)
+        form = FormRealisateur(request)
         if form.is_valid():
             return HttpResponseRedirect("/webapp/index")
         else:
             return render(request, 'webapp/ajout_realisateur.html', {'form': form})
     else:
-        form = FormReal()
+        form = FormRealisateur()
         return render(request, 'webapp/ajout_realisateur.html', {'form': form})
 
 def traitement_real(request):
-    lform = FormReal(request.POST)
+    lform = FormRealisateur(request.POST)
     if lform.is_valid():
         Real = lform.save()
         return render(request,"webapp/index.html",{"Real" : Real})
@@ -199,12 +199,13 @@ def traitement_real(request):
         return render(request,"webapp/ajout_realisateur.html",{"form": lform})
 
 def show_real(request):
-    queryset = models.Real.objects.all()  
+    queryset = models.Realisateur.objects.all()  
     print(queryset)
     print(len(queryset))
-    return render(request,"webapp/show_real.html",{"webapp_real" : queryset})
+    return render(request,"webapp/show_real.html",{"webapp_realisateur" : queryset})
 
 def delete_real(request, id):
-    id = models.Real.objects.get(pk=id)
+    id = models.Realisateur.objects.get(pk=id)
     id.delete()
     return HttpResponseRedirect("/webapp/show_real")
+

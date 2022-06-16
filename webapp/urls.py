@@ -27,4 +27,8 @@ urlpatterns = [
     path("show_film/", views.show_film),
     path("delete/film/<int:id>", views.delete_film),
     path("modif/film/<int:id>", views.modif_film),
+    path('ajout_realisateur/', views.ajout_realisateur),
+    path('traitement_real/', views.traitement_real),
+    path('show_real/', views.show_real),
+    path('delete/real/<int:id>', views.delete_real),
 ]

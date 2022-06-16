@@ -51,12 +51,12 @@ class Personne(models.Model):
 class Realisateur(models.Model):
     Nom = models.CharField(max_length=50)
     def __str__(self):
-        chaine = f"{self.titre}"
+        chaine = f"Nom {self.Nom}"
         return chaine
     def dico(self):
         dico = {'Nom': self.Nom}
         return dico
-        
+
 
 class Film(models.Model):
     titre = models.CharField(max_length=50)
