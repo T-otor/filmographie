@@ -41,9 +41,6 @@ class Personne(models.Model):
     password = models.CharField(max_length=50)
     type = models.ForeignKey(Type, on_delete=models.CASCADE)
     pseudo = models.CharField(max_length=50)
-   
-    
-    
     def __str__(self):
         chaine = f"Nom {self.Nom}, Prenom {self.Prenom}, Age {self.Age}, mail {self.mail}, password {self.password}, type {self.type}, pseudo {self.pseudo}"
         return chaine   
@@ -51,4 +48,28 @@ class Personne(models.Model):
         dico = {'Nom': self.Nom, 'Prenom': self.Prenom, 'Age': self.Age, 'mail': self.mail, 'password': self.password, 'type': self.type, 'pseudo': self.pseudo}
         return dico
 
+class Realisateur(models.Model):
+    Nom = models.CharField(max_length=50)
+    def __str__(self):
+        chaine = f"{self.titre}"
+        return chaine
+    def dico(self):
+        dico = {'Nom': self.Nom}
+        return dico
+        
+
+class Film(models.Model):
+    titre = models.CharField(max_length=50)
+    annee = models.DateField()
+    genre = models.CharField(max_length=50)
+    realisateur = models.ForeignKey(Realisateur, on_delete=models.CASCADE)
+    acteur_principal = models.CharField(max_length=50)
+    synopsis = models.CharField(max_length=100000)
+    note = models.IntegerField()
+    def __str__(self):
+        chaine = f"titre {self.titre}, annee {self.annee}, genre {self.genre}, realisateur {self.realisateur}, acteur_principal {self.acteur_principal}, synopsis {self.synopsis}, note {self.note}"
+        return chaine
+    def dico(self):
+        dico = {'titre': self.titre, 'annee': self.annee, 'genre': self.genre, 'realisateur': self.realisateur, 'acteur_principal': self.acteur_principal, 'synopsis': self.synopsis, 'note': self.note}
+        return dico
 

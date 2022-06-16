@@ -22,4 +22,9 @@ urlpatterns = [
     path('connexion/', views.login_user),
     path("accounts/", include("django.contrib.auth.urls")),
     path("accounts/register", views.register_request, name="register"),
+    path("ajout_film/", views.ajout_film),
+    path("traitement_film/", views.traitement_film),
+    path("show_film/", views.show_film),
+    path("delete/film/<int:id>", views.delete_film),
+    path("modif/film/<int:id>", views.modif_film),
 ]

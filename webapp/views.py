@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import FormCat, FormAct, FormPersonne, FormType, NewUserForm
+from .forms import FormCat, FormAct, FormPersonne, FormType, NewUserForm, FormFilm, FormRealisateur
 from . import models
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate,logout
@@ -143,3 +143,68 @@ def register_request(request):
 		messages.error(request, "Unsuccessful registration. Invalid information.")
 	form = NewUserForm()
 	return render (request=request, template_name="webapp/register.html", context={"register_form":form})
+
+def ajout_film(request):
+    if request.method == "POST":
+        form = FormFilm(request)
+        if form.is_valid():
+            return HttpResponseRedirect("/webapp/index")
+        else:
+            return render(request, 'webapp/ajout_film.html', {'form': form})
+    else:
+        form = FormFilm()
+        return render(request, 'webapp/ajout_film.html', {'form': form})
+
+def traitement_film(request):
+    lform = FormFilm(request.POST)
+    if lform.is_valid():
+        Film = lform.save()
+        return render(request,"webapp/index.html",{"Film" : Film})
+    else:
+        return render(request,"webapp/ajout_film.html",{"form": lform})
+
+def show_film(request):
+    queryset = models.Film.objects.all()  
+    print(queryset)
+    print(len(queryset))
+    return render(request,"webapp/show_film.html",{"webapp_film" : queryset})
+
+def delete_film(request, id):
+    id = models.Film.objects.get(pk=id)
+    id.delete()
+    return HttpResponseRedirect("/webapp/show_film")
+
+def modif_film(request, id):
+    hdd = models.Film.objects.get(pk=id)
+    form = FormFilm(hdd.dico())
+    return render(request, 'webapp/ajout_film.html',{"form":form, "id":id})
+
+def ajout_realisateur(request):
+    if request.method == "POST":
+        form = FormReal(request)
+        if form.is_valid():
+            return HttpResponseRedirect("/webapp/index")
+        else:
+            return render(request, 'webapp/ajout_realisateur.html', {'form': form})
+    else:
+        form = FormReal()
+        return render(request, 'webapp/ajout_realisateur.html', {'form': form})
+
+def traitement_real(request):
+    lform = FormReal(request.POST)
+    if lform.is_valid():
+        Real = lform.save()
+        return render(request,"webapp/index.html",{"Real" : Real})
+    else:
+        return render(request,"webapp/ajout_realisateur.html",{"form": lform})
+
+def show_real(request):
+    queryset = models.Real.objects.all()  
+    print(queryset)
+    print(len(queryset))
+    return render(request,"webapp/show_real.html",{"webapp_real" : queryset})
+
+def delete_real(request, id):
+    id = models.Real.objects.get(pk=id)
+    id.delete()
+    return HttpResponseRedirect("/webapp/show_real")

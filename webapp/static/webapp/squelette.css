@@ -1,0 +1,134 @@
+/*body du squelette*/
+body{
+    background-color:  whitesmoke;
+    color: rgb(0, 0, 0);
+    font-family: 'Poppins';
+    font-weight: 200;
+    margin: 0;
+    text-decoration: none;
+    list-style-type: none; 
+}
+.contenu{
+    padding: 5%;
+}
+h1{
+	font-size: 35px;
+    text-decoration: underline overline;
+    text-decoration-color: #FF4B61;
+}
+/*FIN body du squelette*/
+
+
+/*Barre navigation (squelette)*/
+nav {
+	display: flex;
+	margin: 0 0;
+	background-color: #FF4B61;
+	top: 0;
+}
+nav .navbar {
+	padding: 0;
+    margin: 0;
+	list-style: none;
+	position: relative;
+	}	
+nav .navbar li {
+	display:inline-block;
+	background-color: #FF4B61;
+	}
+nav a {
+	display:block;
+	padding:0 60px;	
+	color: black;
+	font-weight: 400;
+    list-style-type: none;
+    text-decoration: none;
+	font-size:25px;
+	line-height: 100px;
+}
+nav a:hover { 
+	background-color: #FF7182; 
+}
+
+/*drop down*/
+nav .navbar ul {
+	display: none;
+	position: absolute; 
+	top: 100px; /* the height of the main nav */
+}
+/* Display Dropdowns on Hover */
+nav .navbar li:hover > ul {
+	display:inherit;
+	opacity: 0.90;
+}	
+/* Fisrt Tier Dropdown */
+nav .navbar ul li {
+	width:220px;
+	float:none;
+	display:list-item;
+	position: relative;
+}
+li > a:after { content:  ' +'; }
+li > a:only-child:after { content: ''; }
+/*FIN dropdown*/
+/*FIN barre navigation (squelette)*/
+
+
+/*bas de page*/
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FF4B61;
+    font-weight: 400;
+    color: black;
+    font-size: 20px;
+}
+.gauche{
+    display: block;
+    justify-content: left;
+    padding-left: 60px;
+}
+.droite{
+    display: block;
+    justify-content: right;
+    padding-right: 60px;
+}
+/*FIN bas de page*/
+
+
+/*diff page*/
+tbody{
+	font-family: 'Poppins';
+    font-weight: 200;
+	font-size: 14px;
+	line-height: 18px;
+	background: #f4f4f4;
+}
+
+.list-ent{
+	padding: 15px;
+	overflow: hidden;
+}
+
+.list-item{
+	border: 1px solid #EEE;
+	background: #FFF;
+	margin-bottom: 10px;
+	padding: 10px;
+	box-shadow: 0px 0px 10px 0px #EEE;
+}
+
+.list-item h4{
+	color: #FF7182;
+	font-size: 18px;
+	margin: 0 0 5px;	
+}
+
+a .bouton{
+	text-decoration: none;
+	font-size: 6px;
+}
+/*FIN diff page*/
