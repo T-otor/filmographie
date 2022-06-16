@@ -12,6 +12,7 @@ body{
     padding: 5%;
 }
 h1{
+	font-size: 25px;
     text-decoration: underline overline;
     text-decoration-color: #FF4B61;
 }
@@ -95,7 +96,7 @@ footer{
 /*FIN bas de page*/
 
 
-/*sh categorie*/
+/*diff page*/
 tbody{
 	font-family: 'Poppins';
     font-weight: 200;
@@ -122,4 +123,9 @@ tbody{
 	font-size: 18px;
 	margin: 0 0 5px;	
 }
-/*FIN sh categorie*/
+
+a .bouton{
+	text-decoration: none;
+	font-size: 6px;
+}
+/*FIN diff page*/
