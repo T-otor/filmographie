@@ -1,16 +1,17 @@
 {% extends "webapp/squelette.html" %}
 
         {% block content %}
-    <h1 class="titre">Inscription </h1>
-<section>
-    <form method="post" action="/webapp/traitement_utilisateur/">
-    {% csrf_token %}
-    {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
-    -->
-    <input type="submit" value="envoyer␣les␣données"\>
-    <a href='/webapp/index'class="bouton">Retour à l'accueil</a>
+<section class="wrapper">
+    <form class="form-signin">
+        <h1 class="titre">Inscription </h1>
+        <form method="post" action="/webapp/traitement_utilisateur/">
+            {% csrf_token %}
+            {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
+        -->
+            <input type="submit" value="envoyer␣les␣données"\>
+            <a href='/webapp/index'class="bouton">Retour à l'accueil</a>
+        </form>
     </form>
-</section>
 </section>
 </body>
 </html>

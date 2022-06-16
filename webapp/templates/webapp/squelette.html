@@ -18,21 +18,26 @@
                 <li>
                     <a href="#" class="clic">Répertoire</a>
                     <ul>
-                        <li><a href="/webapp/show_film" class="clic">Films</a></li>
-                        <li><a href="/webapp/show_cat" class="clic">Catégories</a></li>
-                        <li><a href="/webapp/show_act" class="clic">Acteurs</a></li>
-                        <li><a href="/webapp/show_real" class="clic">Réalisateurs</a></li>
+                        <li><a href="/webapp/show_film" class="petit">Films</a></li>
+                        <li><a href="/webapp/show_cat" class="petit">Catégories</a></li>
+                        <li><a href="/webapp/show_act" class="petit">Acteurs</a></li>
+                        <li><a href="/webapp/show_real" class="petit">Réalisateurs</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#" class="clic">Ajouter</a>
                     <ul>
-                        <li><a href="/webapp/ajout_categorie" class="clic">Catégories</a></li>
-                        <li><a href="/webapp/ajout_acteur" class="clic">Acteurs</a></li>
+                        <li><a href="/webapp/ajout_categorie" class="petit">Catégories</a></li>
+                        <li><a href="/webapp/ajout_acteur" class="petit">Acteurs</a></li>
                     </ul>
                 </li>
-                    <li><a href="/webapp/ajout_utilisateur" class="clic">Inscription</a></li>
-                    <li><a href="/webapp/accounts/login" class="clic">Connexion</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Déconnexion</a></li>
+                    <li>Bonjour {{ user.username }}!</li>
+                {% else %}
+                <li><a href="/webapp/accounts/register" class="clic">Inscription</a></li>
+                <li><a href="/webapp/accounts/login" class="clic">Connexion</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>

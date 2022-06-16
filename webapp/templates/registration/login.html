@@ -1,14 +1,15 @@
 {% extends "webapp/squelette.html" %}
 
         {% block content %}
-<section>
-    <h1>Login</h1>
-    <form method="post">
+<section class="wrapper">
+  <form class="form-signin">
+    <h1>Connexion</h1>
+    <form method="post" class="form-control">
       {% csrf_token %}
       {{ form.as_p }}
       <button type="submit">Login</button>
-    </form>
-</section>
+    </form> 
+  </form>
 </section>
 </body>
 </html>

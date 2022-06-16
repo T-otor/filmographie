@@ -38,30 +38,36 @@ nav .navbar li {
 	}
 nav a {
 	display:block;
-	padding:0 60px;	
+	padding:0 50px;	
 	color: black;
 	font-weight: 400;
     list-style-type: none;
     text-decoration: none;
-	font-size:25px;
+	font-size:30px;
 	line-height: 100px;
 }
 nav a:hover { 
 	background-color: #FF7182; 
 }
 
-/*drop down*/
+/*drop down navbar*/
+.petit{
+    text-decoration: none;
+	font-size: 20px;
+}
 nav .navbar ul {
 	display: none;
 	position: absolute; 
-	top: 100px; /* the height of the main nav */
+	top: 100px;
 }
-/* Display Dropdowns on Hover */
+
 nav .navbar li:hover > ul {
+	text-align: center;
+	list-style-type: none;
 	display:inherit;
 	opacity: 0.90;
 }	
-/* Fisrt Tier Dropdown */
+
 nav .navbar ul li {
 	width:220px;
 	float:none;
@@ -70,7 +76,7 @@ nav .navbar ul li {
 }
 li > a:after { content:  ' +'; }
 li > a:only-child:after { content: ''; }
-/*FIN dropdown*/
+/*FIN dropdown navbar*/
 /*FIN barre navigation (squelette)*/
 
 
@@ -132,3 +138,26 @@ a .bouton{
 	font-size: 6px;
 }
 /*FIN diff page*/
+
+/*page login */
+.wrapper {	
+	margin-top: 80px;
+  	margin-bottom: 80px;
+}
+
+.form-signin {
+  	max-width: 380px;
+  	padding: 15px 35px 45px;
+ 	 margin: 0 auto;
+  	background-color: #fff;
+  	border: 1px solid rgba(0,0,0,0.1); 
+} 
+
+.form-control {
+	position: relative;
+	font-size: 16px;
+	height: auto;
+	padding: 10px;
+	@include box-sizing(border-box);
+}
+/*FIN page login*/
