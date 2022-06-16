@@ -1,0 +1,43 @@
+{% extends "webapp/squelette.html" %}
+
+        {% block content %}
+<section>
+    {% for Film in webapp_film %}
+    <table class="table is-fullwidth is-hoverable">
+        <thead>
+          <tr>
+            <th>ID </th>
+            <th>Titre </th>
+            <th>Année </th>
+            <th>Genre </th>
+            <th>Réalisateur </th>
+            <th>Acteur principal </th>
+            <th>Synopsis </th>
+            <th>Note </th>
+            <th>Avis </th>
+            <th>Pseudo </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{Film.id}}</td>
+            <td>{{Film.titre}}</td>
+            <td>{{Film.annee}}</td>
+            <td>{{Film.genre}}</td>
+            <td>{{Film.realisateur}}</td>
+            <td>{{Film.acteur_principal}}</td>
+            <td>{{Film.synopsis}}</td>
+            <td>{{Film.note}}</td>
+            <td>{{Film.avis}}</td>
+            <td>{{Film.pseudo}}</td>
+          </tr>
+
+        </tbody>
+        
+      </table>
+      <a href="/webapp/modif/film/{{Film.id}}",class='bouton'>Modifier</a>
+      <a href="/webapp/delete/film/{{Film.id}}",class='bouton'>Supprimer</a>
+{% endfor %}     
+<br>
+<a href='/webapp/index'class="bouton">Retour à l'accueil</a>
+{% endblock %}

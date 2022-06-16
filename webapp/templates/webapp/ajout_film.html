@@ -1,0 +1,22 @@
+{% extends "webapp/squelette.html" %}
+
+        {% block content %}
+    <h3 class="titre">Créer un nouvel enregistrement</h3>
+    </section>
+    {% if user.is_authenticated %}
+<section>
+    <form method="post" action="/webapp/traitement_film/">
+    {% csrf_token %}
+    {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
+    -->
+    <input type="submit" value="envoyer les données"\>
+    <a href='/webapp/index'class="bouton">Retour à l'accueil</a>
+    </form>
+    {% else %}
+    <p>Vous devez être connecté pour créer une notation</p>
+    {% endif %}
+</section>
+</section>
+</body>
+</html>
+{% endblock %}

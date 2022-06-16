@@ -58,3 +58,28 @@ class NewUserForm(UserCreationForm):
 		if commit:
 			user.save()
 		return user
+
+class FormFilm(ModelForm):
+    class Meta:
+        model = models.Film
+        fields = ("titre", "annee", "genre", "realisateur", "acteur_principal", "synopsis", "note", "avis", "pseudo")
+        labels = {
+            "titre" : _("titre"),
+            "annee" : _("annee"),
+            "genre" : _("genre"),
+            "realisateur" : _("realisateur"),
+            "acteur_principal" : _("acteur principal"),
+            "synopsis" : _("synopsis"),
+            "note" : _("note"),
+            "avis" : _("avis"),
+            "pseudo" : _("pseudo")
+        }
+
+class FormRealisateur(ModelForm):
+    class Meta:
+        model = models.Realisateur
+        fields = ("Nom",)
+        albels = {
+            "Nom" : _("Nom"),
+        }
+
