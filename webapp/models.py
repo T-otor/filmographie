@@ -8,6 +8,9 @@ class Cat(models.Model):
     def __str__(self):
         chaine = f"Nom {self.Nom}, Description {self.Description}"
         return chaine
+    def dico(self):
+        dico = {'Nom': self.Nom, 'Description': self.Description}
+        return dico
 
 class Act(models.Model):
     Nom = models.CharField(max_length=50)
@@ -15,3 +18,32 @@ class Act(models.Model):
     def __str__(self):
         chaine = f"Nom {self.Nom}"
         return chaine
+    def dico(self):
+        dico = {'Nom': self.Nom}
+        return dico
+
+
+class Type(models.Model):
+    type = models.CharField(max_length=50)
+    def __str__(self):
+        chaine = f"{self.type}"
+        return chaine
+
+
+class Personne(models.Model):
+    Nom = models.CharField(max_length=50)
+    Prenom = models.CharField(max_length=50)
+    Age = models.IntegerField()
+    mail = models.EmailField()
+    password = models.CharField(max_length=50)
+    type = models.ForeignKey(Type, on_delete=models.CASCADE)
+    pseudo = models.CharField(max_length=50)
+    
+    def __str__(self):
+        chaine = f"Nom {self.Nom}, Prenom {self.Prenom}, Age {self.Age}, mail {self.mail}, password {self.password}, type {self.type}, pseudo {self.pseudo}"
+        return chaine
+    def dico(self):
+        dico = {'Nom': self.Nom, 'Prenom': self.Prenom, 'Age': self.Age, 'mail': self.mail, 'password': self.password, 'type': self.type, 'pseudo': self.pseudo}
+        return dico
+
+

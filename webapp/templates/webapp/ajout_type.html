@@ -4,7 +4,7 @@
     <h3 class="titre">Créer un nouvel enregistrement</h3>
     </section>
 <section>
-    <form method="post" action="/webapp/traitement_act/">
+    <form method="post" action="/webapp/traitement_type/">
     {% csrf_token %}
     {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
     -->
