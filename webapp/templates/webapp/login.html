@@ -1,15 +1,16 @@
 {% extends "webapp/squelette.html" %}
 
         {% block content %}
-    <h3 class="titre">Connexion</h3>
+    <h3 class="titre">Connexion utilisateur</h3>
     </section>
 <section>
-    <form method="post" action="/webapp/traitement_utilisateur/">
-    {% csrf_token %}
-    {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
-    -->
-    <input type="submit" value="envoyer␣les␣données"\>
-    <a href='/webapp/index'class="bouton">Retour à l'accueil</a>
+    <form action="/webapp/connexion/" method="post">
+        {% csrf_token %}
+  
+      <input type="user" placeholder="user" name="mail"/>
+      <input type="password" placeholder="password" name="password  "/>
+      <input type="submit" hidden />
+      <input type="submit" value="envoyer les données"\>
     </form>
 </section>
 </section>
