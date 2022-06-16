@@ -49,9 +49,6 @@ nav a {
 nav a:hover { 
 	background-color: #FF7182; 
 }
-.adroite{
-    justify-content: right;
-}
 
 /*drop down*/
 nav .navbar ul {
@@ -62,6 +59,7 @@ nav .navbar ul {
 /* Display Dropdowns on Hover */
 nav .navbar li:hover > ul {
 	display:inherit;
+	opacity: 0.90;
 }	
 /* Fisrt Tier Dropdown */
 nav .navbar ul li {
