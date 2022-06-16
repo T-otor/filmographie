@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import FormCat, FormAct, FormPersonne, FormType
 from . import models
 from django.http import HttpResponseRedirect
+from django.contrib.auth import login, authenticate,logout
 
 from django.contrib.auth.models import User
 
@@ -157,3 +158,18 @@ def show_personne(request):
     print(len(queryset))
     return render(request,"webapp/show_personne.html",{"webapp_personne" : queryset})
 
+def login_user(request):
+    if request.method == 'POST':
+        users = request.POST.get('user')
+        passwd = request.POST.get('passwd')
+        user = authenticate(username=users, password=passwd)
+        if user is not None and user.is_active:
+            login(request, user)
+            return HttpResponseRedirect("webapp/manager/")
+        else:
+            return render(request,"webapp/login.html")
+    else:
+        return render(request,"webapp/login.html")
+
+def manager(request):
+    return render(request, "webapp/manager.html")

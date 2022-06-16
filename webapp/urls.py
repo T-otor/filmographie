@@ -23,6 +23,8 @@ urlpatterns = [
     path('show_type/', views.show_type),
     path('delete/type/<int:id>', views.delete_type),
     path('modif/type/<int:id>', views.modif_type),
+    path('connexion/', views.login_user),
+    path('manager/', views.manager),
     #path('ajout_film/', views.ajout_film),
     #path('traitement_film/', views.traitement_film),
     #path('show_film/', views.show_film),
