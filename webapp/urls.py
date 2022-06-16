@@ -1,5 +1,6 @@
 from operator import index
 from django.urls import path
+from django.urls import path, include # new
 from . import views
 urlpatterns = [
     path('index/', views.index),
@@ -23,14 +24,7 @@ urlpatterns = [
     path('show_type/', views.show_type),
     path('delete/type/<int:id>', views.delete_type),
     path('modif/type/<int:id>', views.modif_type),
-    #path('ajout_film/', views.ajout_film),
-    #path('traitement_film/', views.traitement_film),
-    #path('show_film/', views.show_film),
-    #path('delete/film/<int:id>', views.delete_film),
-    #path('modif/film/<int:id>', views.modif_film),
-    #path('ajout_realisateur/', views.ajout_realisateur),
-    #path('traitement_realisateur/', views.traitement_realisateur),
-    #path('show_realisateur/', views.show_realisateur),
-    #path('delete/realisateur/<int:id>', views.delete_realisateur),
-   # path('modif/realisateur/<int:id>', views.modif_realisateur),
+    path('connexion/', views.login_user),
+    path("accounts/", include("django.contrib.auth.urls")),
+    #path('manager/', auth_views.login, name='login'),
 ]

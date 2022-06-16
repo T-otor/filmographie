@@ -1,0 +1,39 @@
+{% extends "webapp/squelette.html" %}
+
+        {% block content %}
+<section>
+    {% for Personne in webapp_personne %}
+    <table class="table is-fullwidth is-hoverable">
+        <thead>
+          <tr>
+            <th>ID </th>
+            <th>Nom </th>
+            <th>Prénom </th>
+            <th>Age </th>
+            <th>Mail</th>
+            <th>Mot de passe</th>
+            <th>Pseudo</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{Personne.id}}</td>
+            <td>{{Personne.Nom}}</td>
+            <td>{{Personne.Prenom}}</td>
+            <td>{{Personne.Age}}</td>
+            <td>{{Personne.mail}}</td>
+            <td>{{Personne.password}}</td>
+            <td>{{Personne.pseudo}}</td>
+            <td>{{Personne.type}}</td>
+          </tr>
+
+        </tbody>
+        
+      </table>
+      <a href="/webapp/modif/personne/{{Personne.id}}",class='bouton'>Modifier</a>
+      <a href="/webapp/delete/personne/{{Personne.id}}",class='bouton'>Supprimer</a>
+{% endfor %}     
+<br>
+<a href='/webapp/index'class="bouton">Retour à l'accueil</a>
+{% endblock %}

@@ -2,6 +2,10 @@ from django.shortcuts import render
 from .forms import FormCat, FormAct, FormPersonne, FormType
 from . import models
 from django.http import HttpResponseRedirect
+from django.contrib.auth import login, authenticate,logout
+
+from django.contrib.auth.models import User
+
 # Create your views here.
 def index(request):
     return render(request, 'webapp/index.html')
@@ -118,6 +122,9 @@ def modif_type(request, id):
 def ajout_personne(request):
     if request.method == "POST":
         form = FormPersonne(request)
+        if User.objects.filter(username=self.cleaned_data['pseudo']).exists():
+            form.add_error('pseudo', 'Ce nom d\'utilisateur est déjà utilisé')
+            return render(request, 'webapp/ajout_utilisateur.html', {'form': form})
         if form.is_valid():
             return HttpResponseRedirect("/webapp/index")
         else:
@@ -128,6 +135,7 @@ def ajout_personne(request):
 
 def traitement_personne(request):
     lform = FormPersonne(request.POST)
+    
     if lform.is_valid():
         Personne = lform.save()
         return render(request,"webapp/index.html",{"Personne" : Personne})
@@ -142,11 +150,28 @@ def modif_personne(request, id):
 def delete_personne(request, id):
     id = models.Personne.objects.get(pk=id)
     id.delete()
-    return HttpResponseRedirect("/webapp/show_personne")
+    return HttpResponseRedirect("/webapp/show_utilisateur")
 
 def show_personne(request):
     queryset = models.Personne.objects.all()  
     print(queryset)
     print(len(queryset))
-    return render(request,"webapp/show_personne.html",{"webapp_personne" : queryset})
+    return render(request,"webapp/gestion_utilisateur.html",{"webapp_personne" : queryset})
 
+
+
+def login_user(request):
+    if request.method == 'POST':
+        users = request.POST.get('mail')
+        passwd = request.POST.get('password')
+        user = authenticate(username=mail, password=password)
+        if user is not None and user.is_active:
+            login(request, user)
+            return HttpResponseRedirect("webapp/manager/")
+        else:
+            return render(request,"webapp/login.html")
+    else:
+        return render(request,"webapp/login.html")
+
+def manager(request):
+    return render(request, "webapp/manager.html")
