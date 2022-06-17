@@ -2,11 +2,12 @@
         {% block content %}
   <h1 class="titre-cat">Répertoire des Films</h1>
 <section>
+    {% if user.is_authenticated %}
     {% for Film in webapp_film %}
     <table class="table is-fullwidth is-hoverable">
-        <!--<thead>
+        <thead>
           <tr>
-            <th>ID </th>
+            <<!--<th>ID </th>-->
             <th>Titre </th>
             <th>Année </th>
             <th>Genre </th>
@@ -17,10 +18,10 @@
             <th>Avis </th>
             <th>Pseudo </th>
           </tr>
-        </thead>-->
+        </thead>
         <tbody>
           <tr>
-            <td>{{Film.id}}</td>
+            <!--<td>{{Film.id}}</td>-->
             <td>{{Film.titre}}</td>
             <td>{{Film.annee}}</td>
             <td>{{Film.genre}}</td>
@@ -38,6 +39,10 @@
       <a href="/webapp/modif/film/{{Film.id}}",class='bouton'>Modifier</a>
       <a href="/webapp/delete/film/{{Film.id}}",class='bouton'>Supprimer</a>
 {% endfor %}     
+    {% else %}
+    <p>Vous n'êtes pas connecté</p>
+    {% endif %}
+</section>
 <br>
 <a href='/webapp/index'class="bouton">Retour à l'accueil</a>
 {% endblock %}

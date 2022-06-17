@@ -2,6 +2,7 @@
 {% extends "webapp/squelette.html" %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <h1 class="titre">Ajouter un Acteur</h1>
     <section>
         <form method="post" action="/webapp/traitement_act/">
@@ -12,6 +13,9 @@
             <a href='/webapp/index'class="bouton">Retour Ã  l'accueil</a>
         </form>
     </section>
+{% else %}
+<h1 class="titre">Vous devez être connecté pour voir cette page</h1>
+{% endif %}
+{% endblock %}
 </body>
 </html>
-{% endblock %}

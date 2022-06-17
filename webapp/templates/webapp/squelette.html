@@ -25,6 +25,7 @@
                         <li><a href="/webapp/show_real" class="petit">Réalisateurs</a></li>
                     </ul>
                 </li>
+                {% if user.is_authenticated %}
                 <li>
                     <a href="#" class="clic">Ajouter</a>
                     <ul>
@@ -34,7 +35,7 @@
                         <li><a href="/webapp/ajout_realisateur" class="petit">Réalisateurs</a></li>
                     </ul>
                 </li>
-                {% if user.is_authenticated %}
+                
                     <li><a href="{% url 'logout' %}">Déconnexion</a></li>
                     <li>Bonjour {{ user.username }}!</li>
                 {% else %}
