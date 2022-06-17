@@ -1,0 +1,26 @@
+
+{% extends "webapp/squelette.html" %}
+{% block content %}
+ <h1 class="titre">Répertoire des Acteurs</h1>
+<section>
+    {% for Act in webapp_act %}
+    <table class="table is-fullwidth is-hoverable">
+        <!--<thead>
+          <tr>
+            <th>ID </th>
+            <th>Nom </th>
+          </tr>
+        </thead>-->
+        <tbody>
+          <tr class="list-ent">
+            <!--<td class="list-item">{{Act.id}}</td>-->
+            <td class="list-item"><h4>{{Act.Nom}}</h4></td>
+          </tr>
+        </tbody> 
+    </table>
+      <a href="/webapp/modif/act/{{Act.id}}",class='bouton'>Modifier</a>
+      <a href="/webapp/delete/act/{{Act.id}}",class='bouton'>Supprimer</a>
+{% endfor %}     
+<br>
+<a href='/webapp/index'class="bouton">Retour à l'accueil</a>
+{% endblock %}

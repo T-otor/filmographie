@@ -1,0 +1,29 @@
+
+{% extends "webapp/squelette.html" %}
+{% block content %}
+ <h1 class="titre-cat">Répertoire des catégories</h1>
+<section>
+    {% for Cat in webapp_cat %}
+    <table class="table is-fullwidth is-hoverable">
+        <!--<thead>
+          <tr>
+            <th>ID </th>
+            <th>Nom </th>
+            <th>Description </th>
+          </tr>
+        </thead>-->
+        <tbody>
+          <tr class="list-ent">
+            <!--<td class="list-item">{{Cat.id}}</td>-->
+            <td class="list-item"><h4>{{Cat.Nom}}</h4></td>
+            <td class="list-item">{{Cat.Description}}</td>
+          </tr>
+        </tbody>
+        
+      </table>
+      <a href="/webapp/modif/cat/{{Cat.id}}",class='bouton'>Modifier</a>
+      <a href="/webapp/delete/cat/{{Cat.id}}",class='bouton'>Supprimer</a>
+{% endfor %}     
+<br>
+<a href='/webapp/index'class="bouton">Retour à l'accueil</a>
+{% endblock %}

@@ -1,11 +1,16 @@
 {% extends "webapp/squelette.html" %}
 
         {% block content %}
-        <H2 class="titre">Accueil</h2>
+        <h1 class="titre">Accueil</h1>
         </section>
         <section class="bouton">
-            <a href='/filmographie/recherche'class="bouton">Rechercher un films</a>
-            <a href='/filmographie/best'class="bouton">Voir les films les mieux notés</a>
+            <a href='/webapp/recherche'class="bouton">Rechercher un films</a>
+            <a href='/webapp/best'class="bouton">Voir les films les mieux notés</a>
+            <a href='/webapp/show_cat'class='bouton'>Visualiser les catégories</a>
+            <a href='/webapp/show_act'class='bouton'>Visualiser les acteurs</a>
+            <a href='/webapp/show_real'class='bouton'>Visualiser les réalisateurs</a>
+            <a href='/webapp/show_film'class='bouton'>Visualiser les films</a>
+        
         </section>
         
         {% endblock %}

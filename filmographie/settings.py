@@ -20,20 +20,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t@x1b@=)1lwxai_4ev)g^m=ll5)(@+e-w4bt-o*l3xo$4!xn3n'
+SECRET_KEY = 'django-insecure-qkkt$dvlc2txnq_m^6^n6@#nr&n+3ez+-(l@-%t0dvz@nti&#o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["45.154.99.88"]
+ALLOWED_HOSTS = ["45.154.99.88", "127.0.0.1"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'webapp.apps.WebappConfig',
+    'webapp',
     'django.contrib.admin',
-    'django.contrib.auth',
+    'crispy_forms',
+    "django.contrib.auth",
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -56,6 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,6 +68,7 @@ TEMPLATES = [
             ],
         },
     },
+    
 ]
 
 WSGI_APPLICATION = 'filmographie.wsgi.application'
@@ -124,17 +127,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-DATABASES = {                                                                   
-    'default': {                                                                
-        'ENGINE': 'django.db.backends.mysql',                                   
-        'NAME': 'filmographie',                                                       
-        'USER': 'admin',                                                         
-        'PASSWORD': 'victor2002',                                              
-        'HOST': '45.154.99.88',                                                    
-        'PORT': '',                                                                                   
-        'OPTIONS': {                                                            
-            'sql_mode': 'traditional',                                          
-        }                                                                       
-    }                                                                           
-}
+LOGIN_REDIRECT_URL = "/webapp/index/"
+LOGOUT_REDIRECT_URL = "/webapp/index/" 

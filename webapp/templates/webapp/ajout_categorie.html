@@ -1,0 +1,17 @@
+
+{% extends "webapp/squelette.html" %}
+{% block content %}
+<h1 class="titre">Créer une nouvelle Catégorie</h1>
+<section>
+    <form method="post" action="/webapp/traitement_cat/">
+    {% csrf_token %}
+    {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
+    -->
+    <input type="submit" value="envoyer␣les␣données"\>
+    <a href='/webapp/index'class="bouton">Retour à l'accueil</a>
+    </form>
+</section>
+</section>
+</body>
+</html>
+{% endblock %}

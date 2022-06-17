@@ -1,15 +1,59 @@
+
 <html>
-    <body>
+    <head>
         {% load static %}
         <meta charset="UTF-8">
         <title>{% block title %}SAE23 - Filmographie{% endblock %} </title> <!-- Pour le Titre -->
-        <link rel="stylesheet" type="text/css" href="{%static "webapp/index.css" %}">
-    </body>
-    <head>
+        <link rel="stylesheet" type="text/css" href='{%static "webapp/squelette.css" %}'>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Poppins:wght@200;400&display=swap');
+        </style> 
         <section class="titre">
-        <h1 class="titre">Filmographie </h1>
-        <h2 class="titre">Base de données de films avec leurs notes.</h2>
-        {% block content %}
-        {% endblock %}
     </head>
-</html>
+    <header>
+        <!--Barre de navigation-->
+        <nav>
+            <ul class="navbar">
+                <li style="font-family: 'Kdam Thmor Pro', sans-serif; text-decoration: underline; text-decoration-color: black;"><a href="/webapp/index/">FILMOGRAPHIE</a></li>
+                <li><a href="/webapp/index/" class="clic">Accueil</a></li>
+                <li>
+                    <a href="#" class="clic">Répertoire</a>
+                    <ul>
+                        <li><a href="/webapp/show_film" class="petit">Films</a></li>
+                        <li><a href="/webapp/show_cat" class="petit">Catégories</a></li>
+                        <li><a href="/webapp/show_act" class="petit">Acteurs</a></li>
+                        <li><a href="/webapp/show_real" class="petit">Réalisateurs</a></li>
+                    </ul>
+                </li>
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="#" class="clic">Ajouter</a>
+                    <ul>
+                        <li><a href="/webapp/ajout_film" class="petit">Films</a></li>
+                        <li><a href="/webapp/ajout_categorie" class="petit">Catégories</a></li>
+                        <li><a href="/webapp/ajout_acteur" class="petit">Acteurs</a></li>
+                        <li><a href="/webapp/ajout_realisateur" class="petit">Réalisateurs</a></li>
+                    </ul>
+                </li>
+                
+                    <li><a href="{% url 'logout' %}">Déconnexion</a></li>
+                    <li>Bonjour {{ user.username }}!</li>
+                {% else %}
+                <li><a href="/webapp/accounts/register" class="clic">Inscription</a></li>
+                <li><a href="/webapp/accounts/login" class="clic">Connexion</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <body>
+        <div class=contenu>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+    <!--Pied de page-->
+    <footer>
+        <p class=gauche>FILMOGRAPHIE<br>Répertoire cinématographique</p>
+        <p class=droite>Victor UETTWILLER<br>Emilie GUILHOT</p>
+    </footer>
+</html>)
