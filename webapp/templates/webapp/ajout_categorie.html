@@ -1,8 +1,7 @@
-{% extends "webapp/squelette.html" %}
 
-        {% block content %}
-    <h3 class="titre">Créer un nouvel enregistrement</h3>
-    </section>
+{% extends "webapp/squelette.html" %}
+{% block content %}
+<h1 class="titre">Créer une nouvelle Catégorie</h1>
 <section>
     <form method="post" action="/webapp/traitement_cat/">
     {% csrf_token %}

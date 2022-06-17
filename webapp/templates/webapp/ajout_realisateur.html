@@ -1,8 +1,7 @@
 {% extends "webapp/squelette.html" %}
 
         {% block content %}
-    <h3 class="titre">Créer un nouvel enregistrement</h3>
-    </section>
+    <h1 class="titre">Ajouter un utilisateur</h1>
 <section>
     <form method="post" action="/webapp/traitement_real/">
     {% csrf_token %}
@@ -11,7 +10,6 @@
     <input type="submit" value="envoyer les données"\>
     <a href='/webapp/index'class="bouton">Retour à l'accueil</a>
     </form>
-</section>
 </section>
 </body>
 </html>

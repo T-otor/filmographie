@@ -1,26 +1,27 @@
+
 {% extends "webapp/squelette.html" %}
-
-        {% block content %}
+{% block content %}
+<h1 class="titre-cat">Répertoire des Réalisateurs</h1>
 <section>
-    {% for Realisateur in webapp_realisateur %}
-    <table class="table is-fullwidth is-hoverable">
-        <thead>
-          <tr>
-            <th>ID </th>
-            <th>Nom </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{Realisateur.id}}</td>
-            <td>{{Realisateur.Nom}}</td>
-          </tr>
+{% for Realisateur in webapp_realisateur %}
+<table class="table is-fullwidth is-hoverable">
+<!--<thead>
+  <tr>
+    <th>ID </th>
+    <th>Nom </th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>{{Realisateur.id}}</td>
+    <td>{{Realisateur.Nom}}</td>
+  </tr>-->
 
-        </tbody>
-        
-      </table>
-      <a href="/webapp/modif/real/{{Realisateur.id}}",class='bouton'>Modifier</a>
-      <a href="/webapp/delete/real/{{Realisateur.id}}",class='bouton'>Supprimer</a>
+</tbody>
+
+</table>
+<a href="/webapp/modif/real/{{Realisateur.id}}",class='bouton'>Modifier</a>
+<a href="/webapp/delete/real/{{Realisateur.id}}",class='bouton'>Supprimer</a>
 {% endfor %}     
 <br>
 <a href='/webapp/index'class="bouton">Retour à l'accueil</a>

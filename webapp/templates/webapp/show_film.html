@@ -1,10 +1,10 @@
 {% extends "webapp/squelette.html" %}
-
         {% block content %}
+  <h1 class="titre-cat">Répertoire des Films</h1>
 <section>
     {% for Film in webapp_film %}
     <table class="table is-fullwidth is-hoverable">
-        <thead>
+        <!--<thead>
           <tr>
             <th>ID </th>
             <th>Titre </th>
@@ -17,7 +17,7 @@
             <th>Avis </th>
             <th>Pseudo </th>
           </tr>
-        </thead>
+        </thead>-->
         <tbody>
           <tr>
             <td>{{Film.id}}</td>

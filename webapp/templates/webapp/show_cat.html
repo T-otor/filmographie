@@ -1,23 +1,23 @@
-{% extends "webapp/squelette.html" %}
 
-        {% block content %}
+{% extends "webapp/squelette.html" %}
+{% block content %}
+ <h1 class="titre-cat">Répertoire des catégories</h1>
 <section>
     {% for Cat in webapp_cat %}
     <table class="table is-fullwidth is-hoverable">
-        <thead>
+        <!--<thead>
           <tr>
             <th>ID </th>
             <th>Nom </th>
             <th>Description </th>
           </tr>
-        </thead>
+        </thead>-->
         <tbody>
-          <tr>
-            <td>{{Cat.id}}</td>
-            <td>{{Cat.Nom}}</td>
-            <td>{{Cat.Description}}</td>
+          <tr class="list-ent">
+            <!--<td class="list-item">{{Cat.id}}</td>-->
+            <td class="list-item"><h4>{{Cat.Nom}}</h4></td>
+            <td class="list-item">{{Cat.Description}}</td>
           </tr>
-
         </tbody>
         
       </table>
